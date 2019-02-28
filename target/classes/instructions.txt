@@ -1,0 +1,79 @@
+Introduction
+------------------
+	This is a short programming exercise so we can see how you write code. There are no gotchas or tricks to this exercise. This was made intentionally simple so that you can focus on a well-engineered but not over-engineered (YAGNI and KISS) solution. We're just looking for well-structured and tested code. Well-structured code follows good design principles like the SOLID principles and well-tested code has comprehensive unit tests. If we like your solution we will discuss with you your code and your approach to the problem. We will then introduce changes to the requirements and ask you how you would change your code to meet the new requirements.
+	It should take about an hour or two to finish this exercise. If it takes you more or less time that's fine. Since we do the bulk of our work in Java we would like you to do this exercise in Java. As a final note if you write this exercise correctly using TDD you will almost certainly produce the type of code we're looking for.
+
+Problem
+------------------
+	Included with the instructions is an input CSV file that lists sensor readings from a platform in the order they were received.
+
+Each row is of the form: [Platform name],[Reading send time in seconds since Epoch],[Reading receive time in seconds since Epoch],[Number of sensors with the same reading],[Reading value]
+
+	We want you to take these platform readings and compute some simple statistics for each platform. You should output a CSV file with one row for each platform and a column for each statistic. Your columns should be in the same order as they are in the instructions. While the included input file is small keep in mind that real platform data could easily be gigabytes long. Each row should begin with the platform name. The output should be in alphabetical order by the platform name. All computed platform statistics should be whole truncated integers. All timespans should be outputted in HH:MM:SS format.
+
+Statistics to compute for each platform
+------------------
+Total Gap Time:
+Gap Time is the difference in receive time between two consecutive readings from the same platform. If there is only one reading for a platform the gap time is zero. This is the sum total of all gap times for a platform.
+
+For Example:
+
+Given this input:
+ABCD,1000,2000,3,-90
+ABCD,1500,3000,67,94
+ABCD,1000,4000,42,907
+
+You output for the platform ABCD for this field should be: 00:33:20
+
+Average Flight Time:
+Flight time is the difference between the send and receive time for a reading. This is the average of all flight times for a platform.
+
+For Example:
+
+Given this input:
+ABCD,1000,2000,3,-90
+ABCD,1500,3000,67,94
+ABCD,1000,4000,42,907
+
+You output for the platform ABCD for this field should be: 00:30:33
+
+Max Value:
+This is the maximum reading from all sensors on a platform.
+
+For Example:
+
+Given this input:
+ABCD,1000,2000,3,-90
+ABCD,1500,3000,67,94
+ABCD,1000,4000,42,907
+
+You output for the platform ABCD for this field should be: 907
+
+Min Gap Time:
+Gap Time is the difference in receive time between two consecutive readings from the same platform. If there is only one reading for a platform the gap time is zero. This is the minimum gap time for a platform.
+
+For Example:
+
+Given this input:
+ABCD,1000,2000,3,-90
+ABCD,1500,3000,67,94
+ABCD,1000,4000,42,907
+
+You output for the platform ABCD for this field should be: 00:16:40
+
+So if your only input was a file containing the following lines: 
+ABCD,1000,2000,3,-90
+ABCD,1500,3000,67,94
+ABCD,1000,4000,42,907
+
+Then your output should be a file containing a single line:
+ABCD,00:33:20,00:30:33,907,00:16:40
+
+When you're done
+------------------
+	Please return to me 3 things: Your code and project files in a single zip file, your output CSV file, and the time you spent on the exercise. You will hear back from us within 2 business days of submission of this exercise. 
+	Thank you for considering Anadarko and FiDO in particular and taking the time to do this work. We understand that you're a busy professional and we thank you in particular for your time. Good luck and we look forward to seeing your solution!
+
+Extra Credit
+------------------
+	If you want to impress us you should also include a Python implementation with your Java implementation. It should take the same input and produce the same output. Again, this is strictly optional. Thanks again!
